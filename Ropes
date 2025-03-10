@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+
+using namespace std;
+
+int n, k;
+vector<double> ropes;
+
+bool canCut(double length) {
+    int count = 0;
+    for (double rope : ropes) count += (int)(rope / length);
+    return count >= k;
+}
+
+int main() {
+    cin >> n >> k;
+    ropes.resize(n);
+    double left = 0, right = 0;
+    
+    for (double &r : ropes) {
+        cin >> r;
+        right = max(right, r);
+    }
+
+    while (right - left > 1e-6) {
+        double mid = (left + right) / 2.0;
+        if (canCut(mid)) left = mid;
+        else right = mid;
+    }
+
+    cout << fixed << setprecision(6) << left << endl;
+}
