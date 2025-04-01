@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int Ways(int a, int n) {
+    if (a>n) return false;
+    if (a==n) return true; 
+    return Ways(a+1, n) + Ways(a+2, n) + Ways(a+3, n);
+}
+
+int main() {
+    int a, n;
+    cin>>a>>n; 
+    cout<<Ways(a, n)<<endl; 
+    return 0;
+}
