@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+void printn(int i, int n){
+  if(i<n)  return;
+  cout<<i;
+  if(i>n)cout<<" ";
+  printn(i-1,n);
+}
+ 
+int main(){
+int n;
+cin>>n;
+  printn(n,1);
+  return 0;
+}
