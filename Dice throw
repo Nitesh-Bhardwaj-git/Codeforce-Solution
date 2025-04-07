@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int Ways(int m, int n, int x) {
+    if (x<n || x>n*m) return 0; 
+    if (n==1) return (x>=1 && x<=m) ? 1 : 0; 
+    
+    int ways = 0;
+    for (int i = 1; i <= m; ++i) { 
+        ways += Ways(m, n-1, x-i);
+    }
+    return ways;
+}
+
+int main() {
+    int m, n, x;
+    cin >> m >> n >> x;
+
+    int result = Ways(m, n, x);
+    cout << result << endl;
+
+    return 0;
+}
